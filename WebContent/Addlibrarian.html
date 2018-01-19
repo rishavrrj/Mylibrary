@@ -1,0 +1,43 @@
+$(document).ready(function(){
+$('#go').click(function(){
+		
+		var x=$("form").serializeArray();
+		var c=$('#col').val();
+		 $.each(x, function(i, field){
+			
+            if(c.equals("T1") || c.equals("T2"))
+            {
+            	if(field.value>20 && field.value<0){
+            	$('#msg').text('Enter valid marks between 0-20');
+            	return false;}
+            }
+            else if(c.equals("END_SEM"))
+            {
+            if(field.value>40 && field.value<0){
+            	$('#msg').text('Enter valid marks between 0-40');
+            	return false;	}
+            }
+            else if(c.equals("QUIZ"))
+        {    
+        	if(field.value>10 && field.value<0){
+            	$('#msg').text('Enter valid marks between 0-10');
+            	return false;}
+               }
+               else if(c.equals("ASSIGNMENT") || c.equals("ATTENDANCE"))
+               {
+               	if(field.value>5 && field.value<0){
+            	$('#msg').text('Enter valid marks between 0-5');
+            	return false;}
+               }
+	        $.post('Addmarks' , {input1:field.name,input:field.value,input2:c}, function(data)
+	        		{
+	     
+	        		})
+
+
+		 });
+		   alert('UPDATION SUCESSFUL');
+	});
+
+	$('#exam').
+});
